@@ -7,28 +7,18 @@ from flask_login import login_user, current_user, logout_user, login_required
 # Direct import from __init__.py file
 from flock import app, db, bcrypt
 
-from flock.forms import RegistrationForm, LoginForm, UpdateAccountForm
+"""
+We import forms so we can create an instance of it,
+which can then be used to render as HTML.
+"""
+from flock.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
 from flock.models import User, Post
-
-posts = [
-    {
-        "author": "James Madison",
-        "title": "Blog Post 1",
-        "content": "lorem ipsum",
-        "date_posted": "Feb 9, 2020",
-    },
-    {
-        "author": "Max Lowe",
-        "title": "Blog Post 2",
-        "content": "lorem ipsum",
-        "date_posted": "Feb 9, 2020",
-    },
-]
 
 
 @app.route("/")
 @app.route("/home")
 def home():
+    posts = Post.query.all()
     return render_template("home.html", posts=posts)
 
 
@@ -121,4 +111,19 @@ def account():
     return render_template(
         "account.html", title="Account", image_file=image_file, form=form
     )
+
+
+@app.route("/post/new", methods=["GET", "POST"])
+@login_required
+def new_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(
+            title=form.title.data, content=form.content.data, author=current_user
+        )
+        db.session.add(post)
+        db.session.commit()
+        flash("Your post has been created!", "success")
+        return redirect(url_for("home"))
+    return render_template("create_post.html", title="New Post", form=form)
 
