@@ -15,11 +15,13 @@ After writing a lot (~20) react/node apps, I thought it would be a good change t
 
 ## Development
 
+Make sure you have python 3.6 or above.
+
 ```
 # 1. Clone the project
 $ git clone https://github.com/rxhl/flock.git && cd flock
 
-# 2. Create a .env file and fill in the data
+# 2. Create a .env file and fill in the values
 $ cp env .env
 
 # 3. Create a virtual environment
