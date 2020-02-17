@@ -1,0 +1,5 @@
+SECRET=Any_long_utf8_string
+EMAIL_SERVER=smtp.googlemail.com
+EMAIL_PORT=587
+EMAIL_USER=Your_Gmail_address_here
+EMAIL_PASS=Your_Gmail_password_here

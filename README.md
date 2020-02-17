@@ -16,12 +16,28 @@ After writing a lot (~20) react/node apps, I thought it would be a good change t
 ## Development
 
 ```
-1. Create a virtual environment
+# 1. Clone the project
+$ git clone https://github.com/rxhl/flock.git && cd flock
+
+# 2. Create a .env file and fill in the data
+$ cp env .env
+
+# 3. Create a virtual environment
 $ python3 -m venv venv
 
-2. Install required packages
-$ pip install xyz
+# 4. Activate it
+$ source ./venv/bin/activate
+
+# 5. Install required packages
+$ pip install -r requirements.txt
+
+# 6. Start the flask server
+$ python run.py
 ```
+
+## Email Settings
+
+Flock has an option to let the users reset their passwords. This uses `flask-mail` package which requires a valid email account. We are using Gmail here so after setting the correct values in the `.env` file, make sure to turn on [Less secure app access](https://myaccount.google.com/lesssecureapps) from your Gmail account.
 
 ## Courtesy
 
