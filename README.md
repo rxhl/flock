@@ -8,9 +8,10 @@ After writing a lot (~20) react/node apps, I thought it would be a good change t
 2. Session management (Flask-Login)
 3. Basic UI using jinja (feels ancient after writing `JSX` for so long)
 4. Image upload and editing (Pillow)
-5. Pagination
-6. Well defined project structure (venv, packages etc)
-7. Hosting (Linode)
+5. Pagination support
+6. Email and password reset (with JWT)
+7. Well defined project structure (venv, packages etc)
+8. Hosting (Linode)
 
 ### Development
 
@@ -21,3 +22,7 @@ $ python3 -m venv venv
 2. Install required packages
 $ pip install xyz
 ```
+
+### Courtesy
+
+The amazing Corey Schafer!
