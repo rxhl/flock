@@ -125,5 +125,5 @@ def reset_token(token):
         user.password = hashed_password
         db.session.commit()
         flash(f"Your password has been updated!", "success")
-        return redirect(url_for("main.login"))
+        return redirect(url_for("users.login"))
     return render_template("reset_token.html", title="Reset Password", form=form)

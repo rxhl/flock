@@ -11,38 +11,44 @@ from flock.X import A, B, C
 More generally:
 from mypackage.mymodule import myclass
 """
-import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
-from dotenv import load_dotenv
+from flock.config import Config
 
-load_dotenv()
+"""
+These extensions are not inside create_app()
+as they are independent and should be
+created outside.
 
-app = Flask(__name__)
-app.config["SECRET_KEY"] = os.getenv("SECRET")
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
-login_manager = LoginManager(app)
+These are then initialized inside create_app()
+"""
+db = SQLAlchemy()
+bcrypt = Bcrypt()
+login_manager = LoginManager()
 login_manager.login_view = "users.login"
 login_manager.login_message_category = "info"
-app.config["MAIL_SERVER"] = os.getenv("EMAIL_SERVER")
-app.config["MAIL_PORT"] = os.getenv("EMAIL_PORT")
-app.config["MAIL_USE_TLS"] = True
-app.config["MAIL_USERNAME"] = os.getenv("EMAIL_USER")
-app.config["MAIL_PASSWORD"] = os.getenv("EMAIL_PASS")
-mail = Mail(app)
+mail = Mail()
 
-"""
-Avoid flask circular imports by declaring here.
-"""
-from flock.users.routes import users
-from flock.posts.routes import posts
-from flock.main.routes import main
+# Create the app
+def create_app(config_class=Config):
+    app = Flask(__name__)
+    app.config.from_object(Config)
 
-app.register_blueprint(users)
-app.register_blueprint(posts)
-app.register_blueprint(main)
+    db.init_app(app)
+    bcrypt.init_app(app)
+    login_manager.init_app(app)
+    mail.init_app(app)
+
+    from flock.users.routes import users
+    from flock.posts.routes import posts
+    from flock.main.routes import main
+
+    app.register_blueprint(users)
+    app.register_blueprint(posts)
+    app.register_blueprint(main)
+
+    return app
+
