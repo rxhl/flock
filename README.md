@@ -6,12 +6,13 @@ After writing a lot (~20) react/node apps, I thought it would be a good change t
 
 1. Persistent store (sqlite)
 2. Session management (Flask-Login)
-3. Basic UI using jinja (feels ancient after writing `JSX` for so long)
+3. Basic UI using jinja (feels weird after writing `JSX` for so long)
 4. Image upload and editing (Pillow)
 5. Pagination support
-6. Email and password reset (with JWT)
-7. Well defined project structure (venv, packages etc)
-8. Hosting (Linode)
+6. Custom error pages
+7. Email and password reset (with JWT)
+8. Project structure (venv, packages, blueprints etc)
+9. Hosting (Linode)
 
 ## Development
 

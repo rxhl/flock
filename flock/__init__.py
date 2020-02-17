@@ -42,13 +42,16 @@ def create_app(config_class=Config):
     login_manager.init_app(app)
     mail.init_app(app)
 
+    # This is same as loading routes in app.js
     from flock.users.routes import users
     from flock.posts.routes import posts
     from flock.main.routes import main
+    from flock.errors.handlers import errors
 
     app.register_blueprint(users)
     app.register_blueprint(posts)
     app.register_blueprint(main)
+    app.register_blueprint(errors)
 
     return app
 
