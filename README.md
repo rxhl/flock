@@ -1,4 +1,4 @@
-## flock
+# flock
 
 Flock is a twitter clone in flask.
 
@@ -13,7 +13,7 @@ After writing a lot (~20) react/node apps, I thought it would be a good change t
 7. Well defined project structure (venv, packages etc)
 8. Hosting (Linode)
 
-### Development
+## Development
 
 ```
 1. Create a virtual environment
@@ -23,6 +23,6 @@ $ python3 -m venv venv
 $ pip install xyz
 ```
 
-### Courtesy
+## Courtesy
 
 The amazing Corey Schafer!
