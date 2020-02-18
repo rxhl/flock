@@ -1,5 +1,7 @@
 # flock
 
+**Demo:** http://g.recordit.co/RnSrGySttI.gif
+
 Flock is a twitter clone in flask.
 
 After writing a lot (~20) react/node apps, I thought it would be a good change to write flask. Some of the features of flock includes:
