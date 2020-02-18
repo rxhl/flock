@@ -25,7 +25,6 @@ lazy-object-proxy==1.4.3
 MarkupSafe==0.23
 matplotlib==1.5.2
 mccabe==0.6.1
-MySQL-python==1.2.5
 numpy==1.11.1
 pandas==0.18.1
 pathspec==0.7.0
